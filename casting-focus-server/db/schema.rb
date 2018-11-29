@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_163842) do
+ActiveRecord::Schema.define(version: 2018_11_29_170920) do
 
   create_table "character_classes", force: :cascade do |t|
     t.string "name"
@@ -18,13 +18,9 @@ ActiveRecord::Schema.define(version: 2018_11_29_163842) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "spell_classes", force: :cascade do |t|
-    t.integer "spell_id"
-    t.integer "characterclass_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["characterclass_id"], name: "index_spell_classes_on_characterclass_id"
-    t.index ["spell_id"], name: "index_spell_classes_on_spell_id"
+  create_table "character_classes_spells", id: false, force: :cascade do |t|
+    t.integer "character_class_id", null: false
+    t.integer "spell_id", null: false
   end
 
   create_table "spells", force: :cascade do |t|
