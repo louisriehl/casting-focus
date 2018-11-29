@@ -26,7 +26,12 @@ Spell.destroy_all
 
 puts 'Seeding all spells...'
 spells.each do |spell|
-    Spell.create!(
+
+    if spell["class"].split(", ").include?('Warlock')
+        @warlock.spells.add(new_spell)
+    end
+    
+    new_spell = Spell.create!(
         name:           spell["name"],
         desc:           spell["desc"],
         page:           spell["page"],
@@ -38,7 +43,4 @@ spells.each do |spell|
         level:          spell["level"],
         school:         spell["school"]
     )
-    if spell["class"].split(", ").include?('Warlock')
-        puts "Warlocks can cast #{spell["name"]}"
-    end
 end
