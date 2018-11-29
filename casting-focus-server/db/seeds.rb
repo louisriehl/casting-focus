@@ -8,6 +8,19 @@
 
 spells = ActiveSupport::JSON.decode(File.read('db/spells.json'))
 
+puts 'Destroying old classes...'
+CharacterClass.destroy_all
+
+puts 'Seeding new classes...'
+bard = CharacterClass.create!(name: "Bard")
+cleric = CharacterClass.create!(name: "Cleric")
+druid = CharacterClass.create!(name: "Druid")
+paladin = CharacterClass.create!(name: "Paladin")
+ranger = CharacterClass.create!(name: "Ranger")
+sorceror = CharacterClass.create!(name: "Sorceror")
+warlock = CharacterClass.create!(name: "Warlock")
+wizard = CharacterClass.create!(name: "Wizard")
+
 puts 'Destroying old spells...'
 Spell.destroy_all
 
