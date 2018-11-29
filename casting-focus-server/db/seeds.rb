@@ -13,5 +13,17 @@ Spell.destroy_all
 
 puts 'Seeding all spells...'
 spells.each do |spell|
-    Spell.create!(name: spell["name"])
+    Spell.create!(
+        name:           spell["name"],
+        desc:           spell["desc"],
+        page:           spell["page"],
+        range:          spell["range"],
+        components:     spell["components"],
+        material:       spell["material"],
+        duration:       spell["duration"],
+        casting_time:   spell["casting_time"],
+        level:          spell["level"],
+        school:         spell["school"]
+    )
+    # puts spell["class"].split(", ")
 end
