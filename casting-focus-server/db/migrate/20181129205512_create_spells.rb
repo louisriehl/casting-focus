@@ -13,7 +13,7 @@ class CreateSpells < ActiveRecord::Migration[5.2]
       t.string :duration
       t.boolean :concentration
       t.string :casting_time
-      t.string :school[B
+      t.string :school
 
       t.timestamps
     end
