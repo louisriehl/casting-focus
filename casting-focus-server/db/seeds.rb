@@ -25,12 +25,7 @@ puts 'Destroying old spells...'
 Spell.destroy_all
 
 puts 'Seeding all spells...'
-spells.each do |spell|
-
-    if spell["class"].split(", ").include?('Warlock')
-        @warlock.spells.add(new_spell)
-    end
-    
+spells.each do |spell|  
     new_spell = Spell.create!(
         name:           spell["name"],
         desc:           spell["desc"],
@@ -42,5 +37,8 @@ spells.each do |spell|
         casting_time:   spell["casting_time"],
         level:          spell["level"],
         school:         spell["school"]
-    )
-end
+        )
+        # if spell["class"].split(", ").include?('Warlock')
+        #     @warlock.spells = new_spell
+        # end
+    end
