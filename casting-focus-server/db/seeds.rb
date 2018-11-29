@@ -6,7 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-import Spells from './spells.json'
+import spelllist from './spells.json'
+spells = JSON.parse spelllist
 
 puts 'Seeding all spells...'
 
+Spell.destroy_all
+
+spells.each do |spell|
+    Spell.create!(name: spell.name)
+end
