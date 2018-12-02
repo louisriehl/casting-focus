@@ -10,10 +10,22 @@
 
 spell_list = JSON.parse(File.read('db/spells.json'))
 
+puts 'Destroy old classes...'
+Klass.destroy_all
+
+puts 'Seed ONLY spellcasting classes...'
+@druid     = Klass.create!(name: 'Druid')
+@ranger    = Klass.create!(name: 'Ranger')
+@cleric    = Klass.create!(name: 'Cleric')
+@paladin   = Klass.create!(name: 'Paladin')
+@wizard    = Klass.create!(name: 'Wizard')
+@warlock   = Klass.create!(name: 'Warlock')
+@sorceror  = Klass.create!(name: 'Sorceror')
+
 puts 'Destroy old spells...'
 Spell.destroy_all
 
-puts 'Create spells again...'
+puts 'Seed spells...'
 spell_list.each do |spell|
     @spell = Spell.create!(
         name: spell['name'],
