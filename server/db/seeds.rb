@@ -27,6 +27,9 @@ Spell.destroy_all
 
 puts 'Seed spells...'
 spell_list.each do |spell|
+
+    @classes = spell['class'].split(', ')
+
     @spell = Spell.create!(
         name: spell['name'],
         desc: spell['desc'],
@@ -39,4 +42,8 @@ spell_list.each do |spell|
         level: spell['level'],
         school: spell['school']
     )
+
+    @classes.map do | item |
+        @spell.klasses << Klass.where(name: item)
+    end
 end
