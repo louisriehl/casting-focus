@@ -20,7 +20,7 @@ puts 'Seed ONLY spellcasting classes...'
 @paladin   = Klass.create!(name: 'Paladin')
 @wizard    = Klass.create!(name: 'Wizard')
 @warlock   = Klass.create!(name: 'Warlock')
-@sorceror  = Klass.create!(name: 'Sorceror')
+@sorcerer  = Klass.create!(name: 'Sorcerer')
 
 puts 'Destroy old spells...'
 Spell.destroy_all
@@ -44,6 +44,20 @@ spell_list.each do |spell|
     )
 
     @classes.map do | item |
-        @spell.klasses << Klass.where(name: item)
+        if (item === 'Warlock')
+            SpellKlass.create!(klass: @warlock, spell: @spell)
+        elsif (item === 'Wizard')
+            SpellKlass.create!(klass: @wizard, spell: @spell) 
+        elsif (item === 'Druid')
+            SpellKlass.create!(klass: @druid, spell: @spell) 
+        elsif (item === 'Ranger')
+            SpellKlass.create!(klass: @ranger, spell: @spell) 
+        elsif (item === 'Cleric')
+            SpellKlass.create!(klass: @cleric, spell: @spell)     
+        elsif (item === 'Sorcerer')
+            SpellKlass.create!(klass: @sorcerer, spell: @spell) 
+        elsif (item === 'Paladin')
+            SpellKlass.create!(klass: @paladin, spell: @spell) 
+        end
     end
 end
