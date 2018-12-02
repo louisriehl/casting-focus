@@ -10,4 +10,21 @@
 
 spell_list = JSON.parse(File.read('db/spells.json'))
 
-puts spell_list[1]
+puts 'Destroy old spells...'
+Spell.destroy_all
+
+puts 'Create spells again...'
+spell_list.each do |spell|
+    @spell = Spell.create!(
+        name: spell['name'],
+        desc: spell['desc'],
+        range: spell['range'],
+        page: spell['page'],
+        components: spell['components'],
+        ritual: spell['ritual'],
+        concentration: spell['concentration'],
+        casting_time: spell['casting_time'],
+        level: spell['level'],
+        school: spell['school']
+    )
+end
