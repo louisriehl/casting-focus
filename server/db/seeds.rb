@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Import spell data from JSON file to seed DB
+
+spell_list = JSON.parse(File.read('db/spells.json'))
+
+puts spell_list[1]
