@@ -14,13 +14,13 @@ puts 'Destroy old classes...'
 Klass.destroy_all
 
 puts 'Seed ONLY spellcasting classes...'
-@druid     = Klass.create!(name: 'Druid')
-@ranger    = Klass.create!(name: 'Ranger')
-@cleric    = Klass.create!(name: 'Cleric')
-@paladin   = Klass.create!(name: 'Paladin')
-@wizard    = Klass.create!(name: 'Wizard')
-@warlock   = Klass.create!(name: 'Warlock')
-@sorcerer  = Klass.create!(name: 'Sorcerer')
+Klass.create!(name: 'Druid')
+Klass.create!(name: 'Ranger')
+Klass.create!(name: 'Cleric')
+Klass.create!(name: 'Paladin')
+Klass.create!(name: 'Wizard')
+Klass.create!(name: 'Warlock')
+Klass.create!(name: 'Sorcerer')
 
 puts 'Destroy old spells...'
 Spell.destroy_all
@@ -44,20 +44,7 @@ spell_list.each do |spell|
     )
 
     @classes.map do | item |
-        if (item === 'Warlock')
-            SpellKlass.create!(klass: @warlock, spell: @spell)
-        elsif (item === 'Wizard')
-            SpellKlass.create!(klass: @wizard, spell: @spell) 
-        elsif (item === 'Druid')
-            SpellKlass.create!(klass: @druid, spell: @spell) 
-        elsif (item === 'Ranger')
-            SpellKlass.create!(klass: @ranger, spell: @spell) 
-        elsif (item === 'Cleric')
-            SpellKlass.create!(klass: @cleric, spell: @spell)     
-        elsif (item === 'Sorcerer')
-            SpellKlass.create!(klass: @sorcerer, spell: @spell) 
-        elsif (item === 'Paladin')
-            SpellKlass.create!(klass: @paladin, spell: @spell) 
-        end
+        @class = Klass.where(name: item).first
+        SpellKlass.create(klass: @class, spell: @spell)
     end
 end
